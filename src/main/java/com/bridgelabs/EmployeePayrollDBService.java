@@ -11,6 +11,15 @@ public class EmployeePayrollDBService {
     private EmployeePayrollDBService() {
     }
 
+    /**
+     * Purpose : For creating a singleton object
+     */
+    public static EmployeePayrollDBService getInstance() {
+        if (employeePayrollDBService == null)
+            employeePayrollDBService = new EmployeePayrollDBService();
+        return employeePayrollDBService;
+    }
+
 
 
     /**
@@ -77,6 +86,13 @@ public class EmployeePayrollDBService {
         return this.updateEmployeeDataUsingStatement(name, salary);
     }
 
+    /**
+     * Purpose : Update the salary in the DB using PreparedStatement Interface
+     */
+
+    public int updateEmployeeDataPreparedStatement(String name, double salary) throws EmployeePayrollException {
+        return this.updateEmployeeDataUsingPreparedStatement(name,salary);
+    }
 
     /**
      * Purpose : Update the salary in the DB using Statement Interface
@@ -124,7 +140,33 @@ public class EmployeePayrollDBService {
         }
         return employeePayrollList;
     }
+    /**
+     * Purpose : To get the details of a particular employee from the DB using PreparedStatement Interface
+     */
+    private void preparedStatementForEmployeeData() throws EmployeePayrollException {
+        try {
+            Connection connection = this.getConnection();
+            String sql = "SELECT * FROM employeetables WHERE name = ?";
+            employeePayrollDataStatement = connection.prepareStatement(sql);
+        } catch (SQLException e) {
+            throw new EmployeePayrollException("Please check the preparedStatementForEmployeeData() for detailed information!");
+        }
+    }
+    /**
+     * Purpose : Update the salary in the DB using PreparedStatement Interface
+     */
+    private int updateEmployeeDataUsingPreparedStatement(String name, double salary) throws EmployeePayrollException {
+        String sql = "UPDATE employeetables SET salary = ? WHERE name = ?";
+        try (Connection connection = this.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setDouble(1, salary);
+            statement.setString(2, name);
 
+            return statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new EmployeePayrollException("Please check the updateEmployeeDataUsingPreparedStatement() for detailed information!");
+        }
+    }
     /**
      * Purpose : Create connection to execute query and read the value from the database
      * Assign the value in a list variable

@@ -10,7 +10,9 @@ public class EmployeePayrollService {
         DB_IO
     }
 
-
+    public EmployeePayrollService() {
+        employeePayrollDBService = EmployeePayrollDBService.getInstance();
+    }
 
     /**
      * Purpose : To get the list of employee payroll from the database
@@ -44,6 +46,14 @@ public class EmployeePayrollService {
      *           If found, assign the given salary to the EmployeePayrollData list
      */
 
+    public void updateEmployeeSalaryUsingPreparedStatement(String name, double salary) throws EmployeePayrollException {
+        int result = employeePayrollDBService.updateEmployeeDataPreparedStatement(name, salary);
+        if(result == 0)
+            return;
+        EmployeePayrollData employeePayrollData = this.getEmployeePayrollData(name);
+        if( employeePayrollData != null )
+            employeePayrollData.salary = salary;
+    }
 
     /**
      * Purpose : To check whether the EmployeePayrollData is in sync with the DB
