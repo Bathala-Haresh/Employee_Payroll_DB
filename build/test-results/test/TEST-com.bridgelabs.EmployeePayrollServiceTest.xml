@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bridgelabs.EmployeePayrollServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-16T14:36:02" hostname="DESKTOP-M71IR21" time="0.375">
+  <properties/>
+  <testcase name="givenEmployeePayrollInDB_WhenRetrieved_ShouldMatchEmployeeCount" classname="com.bridgelabs.EmployeePayrollServiceTest" time="0.21"/>
+  <testcase name="givenNewSalaryForEmployee_WhenUpdated_ShouldSyncWithDBUsingPreparedStatement" classname="com.bridgelabs.EmployeePayrollServiceTest" time="0.138"/>
+  <testcase name="givenNewSalaryForEmployee_WhenUpdated_ShouldSyncWithDB" classname="com.bridgelabs.EmployeePayrollServiceTest" time="0.026"/>
+  <system-out><![CDATA[Connecting to database: jdbc:mysql://localhost:3306/payroll_service
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@7c59d078
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@3fac1426
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@22f64017
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@644e0064
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@755a1b7e
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@57891846
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
